@@ -1,0 +1,26 @@
+version: '3.1'
+
+services:
+    mps2:
+        container_name: "mps2_cfs"
+        restart: on-failure
+        user: "1000:1000"
+        environment:
+            DOCKER_HOST_PROJECT_DIR: "${PWD}"
+            DOCKER_CONTAINER_PROJECT_DIR: "/opt/cfs"
+            O: "build-mps2"
+            SIMULATION: "cortex-m3"
+            BUILDTYPE: "debug"
+            OMIT_DEPRECATED: "true"
+            MISSIONCONFIG: "mps2"
+            LINKER_SCRIPT: "/opt/cfs/apps/bsp-arm-mps2-an385/scripts/ld/mps2_m3.ld"
+        build:
+            context: ./dockerfiles
+            dockerfile: ubuntu18
+        logging:
+            driver: "json-file"
+            options:
+                max-size: "5m"
+                max-file: "2"
+        volumes:
+            - ".:/opt/cfs"

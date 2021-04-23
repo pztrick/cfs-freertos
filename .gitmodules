@@ -1,0 +1,27 @@
+[submodule "cfe"]
+	path = cfe
+	url = git@github.com:pztrick/cfe.git
+[submodule "psp"]
+	path = psp
+	url = git@github.com:pztrick/psp.git
+[submodule "osal"]
+	path = osal
+	url = git@github.com:pztrick/osal.git
+[submodule "tools/cFS-GroundSystem"]
+	path = tools/cFS-GroundSystem
+	url = git@github.com:nasa/cFS-GroundSystem.git
+[submodule "tools/elf2cfetbl"]
+	path = tools/elf2cfetbl
+	url = git@github.com:nasa/elf2cfetbl
+[submodule "tools/tblCRCTool"]
+	path = tools/tblCRCTool
+	url = git@github.com:nasa/tblCRCTool
+[submodule "apps/bsp-arm-mps2-an385"]
+	path = apps/bsp-arm-mps2-an385
+	url = git@github.com:pztrick/cfs-bsp-arm-mps2-an385.git
+[submodule "lib/freertos"]
+	path = lib/freertos
+	url = git@github.com:FreeRTOS/FreeRTOS-Kernel.git
+[submodule "lib/freertos-plus-fat"]
+	path = lib/freertos-plus-fat
+	url = git@github.com:FreeRTOS/Lab-Project-FreeRTOS-FAT.git

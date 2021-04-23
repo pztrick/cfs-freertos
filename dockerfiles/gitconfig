@@ -1,0 +1,14 @@
+[push]
+	default = current
+    followTags = true
+[alias]
+	unstage = reset HEAD --
+	uncommit = reset --soft HEAD^
+	pullall = !"git pull; git submodule update --init --recursive"
+	dc = diff --cached
+	st = status -sb
+[core]
+	editor = vim
+	filemode = false
+[color]
+	ui = auto

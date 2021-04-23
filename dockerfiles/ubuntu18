@@ -1,0 +1,40 @@
+FROM ubuntu:18.04
+
+ARG DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get -qy update \
+    && apt-get -y install --no-install-recommends \
+        ca-certificates \
+        make \
+        cmake \
+        wget \
+        sudo \
+        golang \
+        git \
+        build-essential \
+        vim \
+        tree \
+        strace \
+        ltrace \
+        lcov=1.13-3 \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN mkdir /home/docker
+RUN chown -R 1000:1000 /home/docker
+
+RUN groupadd -g 1000 docker
+RUN echo "docker:x:1000:1000:docker,,,:/home/docker:/bin/bash" | tee -a /etc/passwd
+
+RUN mkdir -p /toolchain
+
+RUN wget -qO- https://developer.arm.com/-/media/Files/downloads/gnu-rm/9-2019q4/gcc-arm-none-eabi-9-2019-q4-major-x86_64-linux.tar.bz2 | tar xvj -C /toolchain/
+
+ENV PATH="/home/docker/go/bin:${PATH}"
+ENV PATH="/toolchain/gcc-arm-none-eabi-9-2019-q4-major/bin:${PATH}"
+
+ADD bashrc /root/.bashrc
+ADD bashrc /home/docker/.bashrc
+ADD gitconfig /root/.gitconfig
+ADD gitconfig /home/docker/.gitconfig
+
+WORKDIR /opt/cfs

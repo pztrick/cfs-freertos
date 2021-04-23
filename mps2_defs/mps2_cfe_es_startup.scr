@@ -1,0 +1,4 @@
+
+! cfe_es_startup.scr is not implemented for FreeRTOS
+! Copyright 2021 Patrick Paul
+! SPDX-License-Identifier: Apache-2.0 OR MIT-0
